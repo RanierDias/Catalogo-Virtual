@@ -1,0 +1,31 @@
+@import 'colors'
+@import 'mixins'
+
+.main
+    @include container
+    background-color: $white-fixed
+
+    nav
+        display: flex
+        align-items: center
+        gap: 12px
+        padding: 8px 0
+        overflow-x: scroll
+
+        a
+            padding: 6px 8px
+            border-radius: 4px
+            color: $white-fixed
+            background-color: $black-fixed
+
+        .categorieSelected
+            background-color: $color-secondary
+
+    section
+        margin-top: 22px
+
+        ul
+            list-style: none
+            display: grid
+            grid-template-columns: repeat(2, auto)
+            justify-content: space-between

@@ -1,0 +1,67 @@
+@import 'colors'
+@import 'mixins'
+
+.infor
+    h3
+        display: inline
+        width: max-content
+
+    h3 + h3
+        margin-left: 22px
+
+    small
+        display: block
+        margin-top: 14px
+        padding-left: 12px
+        line-height: 28px
+
+.brand
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    svg
+        height: 80px
+        width: 80px
+
+    h1
+        width: 100px
+        text-align: center
+
+    a
+        margin-top: 20px
+        padding: 6px 8px
+        border-radius: 4px
+        background-color: $oppacity
+
+.about
+    display: flex
+    flex-direction: column
+    gap: 12px
+
+    @include dp-laptop
+        position: relative
+
+    a
+        height: 40px
+        align-self: flex-end
+
+        @include dp-laptop
+            position: absolute
+            bottom: 0px
+
+        svg
+            height: 40px
+            width: 40px
+
+.container
+    @include container
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 26px 16px
+    height: 100vh
+    max-width: 1280px
+    color: $white-fixed
+    background: linear-gradient(90deg, rgba(217,195,89,1) 0%, rgba(140,100,27,1) 50%, rgba(0,0,0,1) 50%) no-repeat

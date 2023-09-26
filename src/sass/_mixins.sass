@@ -1,0 +1,21 @@
+@mixin dp-tablet()
+    @media ( min-width: 465px )
+        @content
+
+@mixin dp-laptop()
+    @media ( min-width: 720px )
+        @content
+
+@mixin dp-desktop()
+    @media ( min-width: 1080px )
+        @content
+
+@mixin container()
+    padding: 0 16px
+    @content
+
+    @media ( min-width: 465px )
+        padding: 0 30px
+
+    @media ( min-width: 720px )
+        padding: 0 50px
