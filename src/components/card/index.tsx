@@ -44,12 +44,12 @@ export default function CardProduct({ product }: IPropsCard) {
             Cód. {product.id} - <BsBoxSeamFill /> {product.saleType}
           </small>
 
-          <h4>
+          <h3>
             {product.price.toLocaleString("pt-br", {
               style: "currency",
               currency: "BRL",
             })}
-          </h4>
+          </h3>
         </a>
       </div>
 

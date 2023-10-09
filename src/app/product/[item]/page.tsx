@@ -1,53 +1,82 @@
 "use client";
 import { useState } from "react";
 import Header from "@/components/header";
-import items from "@/utils/items";
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button,
+} from "@mui/material";
+import { BsWhatsapp } from "react-icons/bs";
 import style from "@/sass/ProductPage.module.sass";
+import items from "@/utils/items";
 
 export default function ProductPage({ params }: { params: { item: string } }) {
   const decodeProductName = decodeURIComponent(params.item);
   const product = items.find((item) => item.name.includes(decodeProductName));
-  const [itemVar, setItemVar] = useState(0);
+  const [variation, setVariation] = useState(0);
 
   return (
     <>
       <Header />
 
-      <main>
+      <main className={style.main}>
         <div>
           <img
             src={
-              itemVar == 0 ? product?.image : product?.variations[itemVar].image
+              variation == 0
+                ? product?.image
+                : product?.variations[variation].image
             }
             alt={`${product?.name}, cor ${
-              itemVar == 0 ? product?.color : product?.variations[itemVar].color
+              variation == 0
+                ? product?.color
+                : product?.variations[variation].color
             }`}
           />
         </div>
 
         <div>
-          <h3>{product?.name}</h3>
-          <h2>
-            {itemVar == 0
+          <h2>{product?.name}</h2>
+          <h1>
+            {variation == 0
               ? product?.price.toLocaleString("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 })
-              : product?.variations[itemVar].price?.toLocaleString("pt-br", {
+              : product?.variations[variation].price?.toLocaleString("pt-br", {
                   style: "currency",
                   currency: "BRL",
                 })}
-          </h2>
+          </h1>
 
-          <select
-            name="type"
-            id="type"
-            onChange={(e) => setItemVar(Number(e.target.value))}
-          >
-            {product?.variations.map((item, i) => (
-              <option value={i}>Cor: {item.color}</option>
-            ))}
-          </select>
+          <div>
+            <FormControl sx={{ minWidth: 120, maxWidth: 200 }}>
+              <InputLabel id="variations-item">Cor</InputLabel>
+              <Select
+                labelId="variations-item"
+                label="Cor"
+                value={variation}
+                onChange={(e) => setVariation(Number(e.target.value))}
+              >
+                {product?.variations.map((item, i) => (
+                  <MenuItem value={i} key={i}>
+                    {item.color}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <Button variant="outlined" size="large" style={{ height: 53 }}>
+              Carrinho
+            </Button>
+          </div>
+
+          <Button variant="contained" size="large">
+            Fazer Pedido
+            <BsWhatsapp />
+          </Button>
         </div>
       </main>
     </>
