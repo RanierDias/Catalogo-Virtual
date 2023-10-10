@@ -1,11 +1,13 @@
 "use client";
+import { useState } from "react";
 import { MdFavorite, MdSearch, MdOutlineSearchOff } from "react-icons/md";
 import { IoMdCart } from "react-icons/io";
 import style from "@/sass/Header.module.sass";
-import { useState } from "react";
+import { useCart } from "@/context/cart";
 
 export default function Header() {
   const [search, setSearch] = useState(false);
+  const { cart } = useCart();
 
   return (
     <header className={style.header}>
@@ -31,6 +33,7 @@ export default function Header() {
         {!search && (
           <a href="/cart">
             <IoMdCart />
+            {cart.length}
           </a>
         )}
       </nav>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import Header from "@/components/header";
 import {
   FormControl,
@@ -9,6 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import { BsWhatsapp } from "react-icons/bs";
+import { AiOutlineHome } from "react-icons/ai";
 import style from "@/sass/ProductPage.module.sass";
 import items from "@/utils/items";
 
@@ -78,6 +80,10 @@ export default function ProductPage({ params }: { params: { item: string } }) {
             <BsWhatsapp />
           </Button>
         </div>
+
+        <Link href="/home">
+          <AiOutlineHome />
+        </Link>
       </main>
     </>
   );

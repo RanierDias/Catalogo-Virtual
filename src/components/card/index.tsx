@@ -1,30 +1,13 @@
+"use client";
+
 import { BsBoxSeamFill } from "react-icons/bs";
+import { IPropsCard } from "./interface";
 import style from "@/sass/Card.module.sass";
-
-interface IVariatonsProduct {
-  image?: string;
-  color: string;
-  price?: number;
-}
-
-interface IProduct {
-  id: string;
-  image: string;
-  name: string;
-  description: string;
-  color: string;
-  price: number;
-  categorie: string;
-  saleType: string;
-  variations?: IVariatonsProduct[];
-}
-
-interface IPropsCard {
-  product: IProduct;
-}
+import { useCart } from "@/context/cart";
 
 export default function CardProduct({ product }: IPropsCard) {
   const encodeProductName = encodeURIComponent(product.name);
+  const { addItemCart } = useCart();
 
   return (
     <li className={style.card}>
@@ -53,10 +36,7 @@ export default function CardProduct({ product }: IPropsCard) {
         </a>
       </div>
 
-      <div>
-        <span>0</span>
-        <button>Comprar</button>
-      </div>
+      <button onClick={() => addItemCart(product)}>Comprar</button>
     </li>
   );
 }
