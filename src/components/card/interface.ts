@@ -22,8 +22,9 @@ export interface IPropsCard {
 
 export interface ICart {
   id: string;
+  image: string;
   name: string;
   price: number;
   amount: number;
-  variation: number;
+  variation: string;
 }
