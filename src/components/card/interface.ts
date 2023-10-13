@@ -1,19 +1,16 @@
 interface IVariatonsProduct {
-  image?: string;
+  image: string;
   color: string;
-  price?: number;
+  price: number;
 }
 
 export interface IProduct {
   id: string;
-  image: string;
   name: string;
   description: string;
-  color: string;
-  price: number;
   categorie: string;
   saleType: string;
-  variations?: IVariatonsProduct[];
+  variations: IVariatonsProduct[];
 }
 
 export interface IPropsCard {

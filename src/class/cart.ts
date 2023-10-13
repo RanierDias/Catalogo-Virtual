@@ -7,16 +7,15 @@ export default class itemCart {
   price: number;
   amount: number;
   variation: string;
-  // criar ou refatorar o price para ficar o preço total das variations.
 
   constructor(product: IProduct, variation: number) {
+    const { color, image, price } = product.variations[variation];
+
     this.id = product.id;
-    this.image = product.image;
     this.name = product.name;
     this.amount = 1;
-    
-    if (variation > 0) {
-      // fazer a questão da variação do produto
-    }
+    this.image = image;
+    this.price = price;
+    this.variation = color;
   }
 }

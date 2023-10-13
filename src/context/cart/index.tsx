@@ -27,11 +27,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart(newCart);
   }
 
-  function addItemCart(product: IProduct) {
-    const productFound = cart.find((item) => item.id == product.id);
+  function addItemCart(product: IProduct, variation: number) {
+    const productFound = cart.find(
+      (item) =>
+        item.id == product.id &&
+        item.variation == product.variations[variation].color
+    );
 
     if (!productFound) {
-      const newItemCart = new itemCart(product, 0);
+      const newItemCart = new itemCart(product, variation);
       const newCart = [...cart, newItemCart];
 
       return finishedCart(newCart, product.name, 0);

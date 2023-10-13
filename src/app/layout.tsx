@@ -1,6 +1,9 @@
 import "@/sass/global.sass";
+import "react-toastify/ReactToastify.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { CartProvider } from "@/context/cart";
+import { Flip, ToastContainer } from "react-toastify";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -19,7 +22,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={montserrat.className}>{children}</body>
+      <CartProvider>
+        <body className={montserrat.className}>{children}</body>
+      </CartProvider>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Flip}
+        theme="light"
+        limit={2}
+      />
     </html>
   );
 }

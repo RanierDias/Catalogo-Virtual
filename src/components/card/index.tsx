@@ -14,8 +14,8 @@ export default function CardProduct({ product }: IPropsCard) {
       <div>
         <a href={`/product/${encodeProductName}`}>
           <img
-            src={product.image}
-            alt={`${product.name}, cor ${product.color}. ${product.description}`}
+            src={product.variations[0].image}
+            alt={`${product.name}, cor ${product.variations[0].color}. ${product.description}`}
           />
         </a>
       </div>
@@ -28,7 +28,7 @@ export default function CardProduct({ product }: IPropsCard) {
           </small>
 
           <h3>
-            {product.price.toLocaleString("pt-br", {
+            {product.variations[0].price.toLocaleString("pt-br", {
               style: "currency",
               currency: "BRL",
             })}
@@ -36,7 +36,7 @@ export default function CardProduct({ product }: IPropsCard) {
         </a>
       </div>
 
-      <button onClick={() => addItemCart(product)}>Comprar</button>
+      <button onClick={() => addItemCart(product, 0)}>Comprar</button>
     </li>
   );
 }
