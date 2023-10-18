@@ -12,16 +12,17 @@ const cartFromStorage = localStorage.getItem("luxury:cart") || "[]";
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<ICart[]>(JSON.parse(cartFromStorage));
 
-  function finishedCart(newCart: ICart[], productName: string, amount: number) {
-    localStorage.setItem("luxury:cart", JSON.stringify(newCart));
+  function finishedCart(itemCart: ICart, newCart: ICart[]) {
     const message =
-      amount > 0
-        ? `Tem ${amount}x ${productName} no carrinho`
-        : `${productName} foi adicionado ao carrinho`;
+      itemCart.amount > 1
+        ? `Tem ${itemCart.amount}x ${itemCart.name} ${itemCart.variation} no carrinho`
+        : `${itemCart.name} ${itemCart.variation} foi adicionado ao carrinho`;
+
+    localStorage.setItem("luxury:cart", JSON.stringify(newCart));
 
     toast(message, {
       type: "success",
-      toastId: productName,
+      toastId: itemCart.id,
     });
 
     setCart(newCart);
@@ -38,20 +39,67 @@ export function CartProvider({ children }: { children: ReactNode }) {
       const newItemCart = new itemCart(product, variation);
       const newCart = [...cart, newItemCart];
 
-      return finishedCart(newCart, product.name, 0);
+      return finishedCart(newItemCart, newCart);
     }
 
     const newCart = cart.map((item) => {
-      if (item.id == product.id) item.amount += 1;
+      if (
+        item.id == productFound.id &&
+        item.variation == product.variations[variation].color
+      )
+        item.amount += 1;
 
       return item;
     });
 
-    return finishedCart(newCart, product.name, productFound.amount);
+    return finishedCart(productFound, newCart);
+  }
+
+  function removeItemCart(itemCart: ICart) {
+    const newCart = cart.filter((item) =>
+      item.id === itemCart.id ? item.variation != itemCart.variation : true
+    );
+
+    localStorage.setItem("luxury:cart", JSON.stringify(newCart));
+    setCart(newCart);
+  }
+
+  function removeQuantityItem(itemCart: ICart) {
+    if (itemCart.amount == 0) return removeItemCart(itemCart);
+
+    const newCart = cart.map((item) => {
+      if (item.id == itemCart.id && item.variation == itemCart.variation)
+        item.amount -= 1;
+
+      return item;
+    });
+
+    localStorage.setItem("luxury:cart", JSON.stringify(newCart));
+    setCart(newCart);
+  }
+
+  function addQuantityItem(itemCart: ICart) {
+    const newCart = cart.map((item) => {
+      if (item.id == itemCart.id && item.variation == itemCart.variation)
+        item.amount += 1;
+
+      return item;
+    });
+
+    localStorage.setItem("luxury:cart", JSON.stringify(newCart));
+    setCart(newCart);
   }
 
   return (
-    <CartContext.Provider value={{ cart, addItemCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addItemCart,
+        removeItemCart,
+        addQuantityItem,
+        removeQuantityItem,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

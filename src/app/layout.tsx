@@ -23,23 +23,24 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <CartProvider>
-        <body className={montserrat.className}>{children}</body>
+        <body className={montserrat.className}>
+          {children}
+          <ToastContainer
+            position="top-right"
+            autoClose={2500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            transition={Flip}
+            theme="light"
+            limit={2}
+          />
+        </body>
       </CartProvider>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        transition={Flip}
-        theme="light"
-        limit={2}
-      />
     </html>
   );
 }

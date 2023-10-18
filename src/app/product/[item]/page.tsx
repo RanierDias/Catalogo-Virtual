@@ -14,12 +14,27 @@ import { AiOutlineHome } from "react-icons/ai";
 import style from "@/sass/ProductPage.module.sass";
 import items from "@/utils/items";
 import { useCart } from "@/context/cart";
+import userWhatsappData from "../../../utils/whatsapp";
 
 export default function ProductPage({ params }: { params: { item: string } }) {
   const decodeProductName = decodeURIComponent(params.item);
   const product = items.find((item) => item.name.includes(decodeProductName));
   const [variation, setVariation] = useState(0);
   const { addItemCart } = useCart();
+
+  function forwardWhatsapp() {
+    if (!product) return "/home";
+
+    const requestOrder = `Pedido de compra\n 
+    - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - - 
+    \nCód. - Nome - Cor - Qtd\n${product.id} - ${product.name} - ${product.variations[variation].color} - 1\n
+    Quanto fica o total do pedido?
+    `;
+    const message = encodeURIComponent(requestOrder);
+    const whatsappLink = `https://api.whatsapp.com/send?phone=+55${userWhatsappData.number}&text=${message}`;
+
+    return whatsappLink;
+  }
 
   return (
     <>
@@ -70,10 +85,14 @@ export default function ProductPage({ params }: { params: { item: string } }) {
               </Button>
             </div>
 
-            <Button variant="contained" size="large">
+            <Link
+              className={style.whatsappLink}
+              href={forwardWhatsapp()}
+              target="_blank"
+            >
               Fazer Pedido
               <BsWhatsapp />
-            </Button>
+            </Link>
           </div>
 
           <Link href="/home">

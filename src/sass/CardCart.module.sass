@@ -1,0 +1,39 @@
+@import "colors"
+@import "mixins"
+
+.list
+    list-style: none
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 12px
+    margin-top: 12px
+
+    li
+        display: flex
+        gap: 6px
+        width: 100%
+        border-top: 2px solid $gray-0
+        padding-top: 8px
+
+        > div:first-child
+            display: flex
+            justify-content: center
+            align-content: center
+            height: 150px
+            width: 150px
+            overflow: hidden
+
+        > div:first-child + div
+            position: relative
+            display: flex
+            flex-direction: column
+            width: 50%
+
+            > h3
+                margin-top: 6px
+
+            > div
+                position: absolute
+                bottom: 4px
+                right: 4px
