@@ -25,10 +25,17 @@ export default function ProductPage({ params }: { params: { item: string } }) {
   function forwardWhatsapp() {
     if (!product) return "/home";
 
-    const requestOrder = `Pedido de compra\n 
-    - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - - 
-    \nCód. - Nome - Cor - Qtd\n${product.id} - ${product.name} - ${product.variations[variation].color} - 1\n
-    Quanto fica o total do pedido?
+    const requestOrder = `- \t\t\t\t*Pedido de compra*\t\t\t\t-\n
+    - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - - -- - - - -- - - - -- -
+    \n*Cód. - (Qtd) Nome - Cor - Preço*\n${product.id} - ${product.name} - ${
+      product.variations[variation].color
+    } - ${product.variations[variation].price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+    })}\n
+    \t\t\tO pedido total fica por ${product.variations[
+      variation
+    ].price.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}?
     `;
     const message = encodeURIComponent(requestOrder);
     const whatsappLink = `https://api.whatsapp.com/send?phone=+55${userWhatsappData.number}&text=${message}`;

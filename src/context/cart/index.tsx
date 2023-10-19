@@ -65,7 +65,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }
 
   function removeQuantityItem(itemCart: ICart) {
-    if (itemCart.amount == 0) return removeItemCart(itemCart);
+    if (itemCart.amount == 1) return removeItemCart(itemCart);
 
     const newCart = cart.map((item) => {
       if (item.id == itemCart.id && item.variation == itemCart.variation)

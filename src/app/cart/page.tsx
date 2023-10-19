@@ -13,15 +13,22 @@ export default function CartPage() {
   const { cart } = useCart();
 
   function forwardWhatsapp() {
-    const requestOrder = `Pedido de compra\n
-    - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - -
-    \nCód. - Nome - Cor - Qtd\n${cart
+    const requestOrder = `- \t\t\t\t*Pedido de compra*\t\t\t\t-\n
+    - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - - -- - - - -- - - - -- -
+    \n*Cód. - (Qtd) Nome - Cor - Preço*\n${cart
       .map(
         (item) =>
-          `${item.id} - ${item.name} - ${item.variation} - ${item.amount}\n`
+          `${item.id} - ${item.amount > 1 ? `(${item.amount}x)` : ""} ${
+            item.name
+          } - ${item.variation} - ${item.price.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          })}\n`
       )
       .join("\n")}
-      Quanto fica o total do pedido?
+      \t\t\tO pedido total fica por ${cart
+        .reduce((acc, cur) => acc + cur.price, 0)
+        .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}?
       `;
     const message = encodeURIComponent(requestOrder);
     const whatsappLink = `https://api.whatsapp.com/send?phone=+55${userWhatsappData.number}&text=${message}`;
