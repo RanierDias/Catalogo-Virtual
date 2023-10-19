@@ -17,7 +17,11 @@ export default function CategoriePage() {
 
       <main className={style.main}>
         <nav>
-          <Link href="/home" className={style.categorieSelected}>
+          <Link
+            href="/home"
+            className={style.categorieSelected}
+            key={categorie}
+          >
             {categorie}
           </Link>
 
