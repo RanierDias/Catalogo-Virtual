@@ -1,16 +1,27 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { ICart, IProduct } from "@/components/card/interface";
 import itemCart from "@/class/cart";
 import { toast } from "react-toastify";
 import { ICartContext } from "./interface";
 
 const CartContext = createContext<ICartContext>({} as ICartContext);
-const cartFromStorage = localStorage.getItem("luxury:cart") || "[]";
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cart, setCart] = useState<ICart[]>(JSON.parse(cartFromStorage));
+  const [cart, setCart] = useState<ICart[]>([]);
+
+  useEffect(() => {
+    const cartFromStorage = localStorage.getItem("luxury:cart") || "[]";
+
+    setCart(JSON.parse(cartFromStorage));
+  }, []);
 
   function finishedCart(itemCart: ICart, newCart: ICart[]) {
     const message =
