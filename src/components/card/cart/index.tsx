@@ -44,6 +44,15 @@ export default function CardListCart() {
             </div>
           </li>
         ))}
+
+        <li className={style.totalPrice}>
+          <p>Valor total: </p>
+          <h2>
+            {cart
+              .reduce((acc, cur) => acc + cur.price * cur.amount, 0)
+              .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
+          </h2>
+        </li>
       </ul>
     </>
   );

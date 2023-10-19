@@ -51,15 +51,16 @@ export default function ProductPage({ params }: { params: { item: string } }) {
         <main className={style.main}>
           <div>
             <img
-              src={product?.variations[variation].image}
-              alt={`${product?.name}, cor ${product?.variations[variation].color}`}
+              src={product.variations[variation].image}
+              alt={`${product.name}, cor ${product.variations[variation].color}`}
             />
           </div>
 
           <div>
-            <h2>{product?.name}</h2>
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
             <h1>
-              {product?.variations[variation].price.toLocaleString("pt-br", {
+              {product.variations[variation].price.toLocaleString("pt-br", {
                 style: "currency",
                 currency: "BRL",
               })}

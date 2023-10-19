@@ -47,6 +47,48 @@ const items = [
       },
     ],
   },
+  {
+    id: "000029",
+    name: "Bolsa Tote Premium",
+    description: `Eu sou uma descrição extensiva 
+    de proposito para poder mostra como vai ficar o designer dos cards, 
+    tanto no mobile quanto no desktop
+    `,
+    categorie: "Bolsas",
+    saleType: "UN",
+    variations: [
+      {
+        image:
+          "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQSWOMsSmXcfsUXciRgkLY0I0ZW6HeEIobH_j2ihXZeLK7chVR_fkB2Bq2KdmJOjz0X2migXmwQc-k64OOVUbVm2a8lI4axRD-MOrkz4fI&usqp=CAE",
+        color: "Preto",
+        price: 150.5,
+      },
+      {
+        image:
+          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ4id0qaqYIzE8S2RNfmpn3-r1iTQnYgid6auSad0jcA4tJ_jX3PmuAGvrab9UbVDIRPNDplRfn6JJQF9E-Gsd6B_XnBcvJ5-E8is9jX4-V&usqp=CAE",
+        color: "Bege/Caramelo/Café",
+        price: 179.9,
+      },
+    ],
+  },
+  {
+    id: "00078",
+    name: "Bolsa Feminia Grande Shelten",
+    description: `Eu sou uma descrição extensiva 
+    de proposito para poder mostra como vai ficar o designer dos cards, 
+    tanto no mobile quanto no desktop
+    `,
+    categorie: "Bolsas",
+    saleType: "UN",
+    variations: [
+      {
+        image:
+          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSF_YTNUtuMZiWAMoVg3KejMDU0KaCp7NECdZx2VGYXXIw4dozIYeMUwFSB7orgkqWbBAJWF42_khC5YGYDG49Lii_s76_Isp4GzZEFJsRIwWZNJAJomBVEqw&usqp=CAE",
+        color: "Preto Opaco",
+        price: 99.9,
+      },
+    ],
+  },
 ];
 
 export default items;

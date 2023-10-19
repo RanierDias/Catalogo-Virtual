@@ -21,6 +21,10 @@
         .categorieSelected
             background-color: $color-secondary
 
+        @include dp-laptop
+            justify-content: center
+            padding: 20px 0
+
     section
         margin-top: 22px
 
@@ -29,3 +33,12 @@
             display: grid
             grid-template-columns: repeat(2, auto)
             justify-content: space-between
+            row-gap: 12px
+
+            @include dp-tablet
+                grid-template-columns: repeat(3, auto)
+                row-gap: 16px
+
+            @include dp-laptop
+                grid-template-columns: repeat(4, auto)
+                row-gap: 24px

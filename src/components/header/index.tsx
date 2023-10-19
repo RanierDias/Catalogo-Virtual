@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { MdFavorite, MdSearch, MdOutlineSearchOff } from "react-icons/md";
+import { MdSearch, MdOutlineSearchOff } from "react-icons/md";
+import { PiCloudWarningFill } from "react-icons/pi";
 import { IoMdCart } from "react-icons/io";
 import style from "@/sass/Header.module.sass";
 import { useCart } from "@/context/cart";
@@ -23,8 +24,8 @@ export default function Header() {
             />
           </form>
         ) : (
-          <a href="/favorite">
-            <MdFavorite />
+          <a href="/">
+            <PiCloudWarningFill />
           </a>
         )}
         <button onClick={() => setSearch(!search)}>

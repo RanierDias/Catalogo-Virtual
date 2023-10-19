@@ -27,7 +27,7 @@ export default function CartPage() {
       )
       .join("\n")}
       \t\t\tO pedido total fica por ${cart
-        .reduce((acc, cur) => acc + cur.price, 0)
+        .reduce((acc, cur) => acc + cur.price * cur.amount, 0)
         .toLocaleString("pt-br", { style: "currency", currency: "BRL" })}?
       `;
     const message = encodeURIComponent(requestOrder);
@@ -43,14 +43,16 @@ export default function CartPage() {
       <main className={style.main}>
         <CardListCart />
 
-        <Link
-          className={style.whatsappLink}
-          href={forwardWhatsapp()}
-          target="_blank"
-        >
-          Fazer Pedido
-          <BsWhatsapp />
-        </Link>
+        {cart.length > 0 && (
+          <Link
+            className={style.whatsappLink}
+            href={forwardWhatsapp()}
+            target="_blank"
+          >
+            Fazer Pedido
+            <BsWhatsapp />
+          </Link>
+        )}
 
         <Link href="/home">
           <AiOutlineHome />
