@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Catálogo Virtual Rápido e Moderno com Integração ao WhatsApp
 
-## Getting Started
+Bem-vindo ao nosso Catálogo Virtual, a solução perfeita para micro e pequenas empresas que desejam entrar no mundo digital de maneira rápida, segura e sem complicações. Nosso serviço é uma plataforma otimizada, desenvolvida em Next.js 13, que oferece um catálogo virtual eficiente e amigável, permitindo que você exiba seus produtos de maneira atraente e intuitiva.
 
-First, run the development server:
+### Principais Características:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Rápido e Eficiente:** Utilizamos a tecnologia mais recente para garantir que seu catálogo seja carregado instantaneamente, proporcionando uma experiência de usuário ágil e sem espera para seus clientes.
+- **Integração com WhatsApp:** Facilitamos o processo de pedidos para seus clientes, permitindo que eles façam pedidos diretamente através do WhatsApp, eliminando barreiras e simplificando o processo de compra.
+- **Customizável e Moderno:** Nosso catálogo é altamente customizável para refletir a identidade visual única do seu negócio. Além disso, garantimos um design moderno e responsivo para atender às expectativas dos clientes de hoje.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cadastrando produtos no catálogo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Primeiro você vai entrar na rota [/worker/register](/worker/register) do seu site para poder chegar a ferramenta de cadrastro. Nesta ferramenta você vai poder gerar os produtos para o catálogo virtual.
+- Depois de fazer toda a criação dos produtos, vai esta no fim da página um butão escrito "**Gerar Catálogo**".
+- Após clicar nesse botão ele irá copia os items criados e irá redirecionar para o **Github** para o seu "**Catalogo-Virtual/src/utils/items.ts**"
+- Nessa parte você deve clicar no botão "**Edit**" localizado no canto superior da direita.
+- Aperte **Ctrl + A** para selecionar todo texto do documento e depois delete.
+- Aperte **Ctrl + V** para colar o novos items do catálogo.
+- Após clicar no botão "**Commit changes...**" localizado no canto superior da direita também.
+- Após isso aparecerá um painel confirmando as mundaças, clicar no botão "**Commit changes**"
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Para mais suporte
 
-## Learn More
+Email de contanto:
+ranierfernandodias@gmail.com
 
-To learn more about Next.js, take a look at the following resources:
+Número de whatsapp:
+(98) 99111-9275
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Catálogo-Virtual create by @ranierdias - all right reseverd 2023**
