@@ -24,7 +24,9 @@ export default function CategoriePage() {
           {categories.map(
             (element) =>
               element != categorie && (
-                <Link href={`/product?categorie=${element}`}>{element}</Link>
+                <Link href={`/product?categorie=${element}`} key={element}>
+                  {element}
+                </Link>
               )
           )}
         </nav>
