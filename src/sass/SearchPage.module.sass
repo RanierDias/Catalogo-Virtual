@@ -1,0 +1,37 @@
+@import 'mixins'
+@import 'colors'
+
+.main
+    margin-top: 20px
+    @include container
+
+    ul
+        list-style: none
+        display: grid
+        grid-template-columns: repeat(2, auto)
+        justify-content: space-between
+        row-gap: 12px
+        max-height: 80vh
+        overflow-y: scroll
+
+        @include dp-tablet
+            justify-content: space-around
+            row-gap: 18px
+
+        @include dp-laptop
+            grid-template-columns: repeat(3, auto)
+
+        @include dp-desktop
+            grid-template-columns: repeat(4, auto)
+
+    > a
+        position: absolute
+        bottom: 20px
+        right: 16px
+        padding: 10px 12px
+        border-radius: 50%
+        background-color: $gray-0
+
+        svg
+            height: 20px
+            width: 20px

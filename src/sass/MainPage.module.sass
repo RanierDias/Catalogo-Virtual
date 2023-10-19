@@ -1,0 +1,44 @@
+@import 'colors'
+@import 'mixins'
+
+.main
+    @include container
+    background-color: $white-fixed
+
+    nav
+        display: flex
+        align-items: center
+        gap: 12px
+        padding: 8px 0
+        overflow-x: scroll
+
+        a
+            padding: 6px 8px
+            border-radius: 4px
+            color: $white-fixed
+            background-color: $black-fixed
+
+        .categorieSelected
+            background-color: $color-secondary
+
+        @include dp-laptop
+            justify-content: center
+            padding: 20px 0
+
+    section
+        margin-top: 22px
+
+        ul
+            list-style: none
+            display: grid
+            grid-template-columns: repeat(2, auto)
+            justify-content: space-between
+            row-gap: 12px
+
+            @include dp-tablet
+                grid-template-columns: repeat(3, auto)
+                row-gap: 16px
+
+            @include dp-laptop
+                grid-template-columns: repeat(4, auto)
+                row-gap: 24px
