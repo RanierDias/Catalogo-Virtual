@@ -15,7 +15,7 @@ export default function CardProduct({ product }: IPropsCard) {
         <a href={`/product/${encodeProductName}`}>
           <img
             src={product.variations[0].image}
-            alt={`${product.name}, cor ${product.variations[0].color}. ${product.description}`}
+            alt={`${product.name}, cor ${product.variations[0].value}. ${product.description}`}
           />
         </a>
       </div>

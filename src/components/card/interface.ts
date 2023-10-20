@@ -1,6 +1,6 @@
 interface IVariatonsProduct {
   image: string;
-  color: string;
+  value: string;
   price: number;
 }
 
@@ -23,5 +23,8 @@ export interface ICart {
   name: string;
   price: number;
   amount: number;
-  variation: string;
+  variation: {
+    index: number;
+    value: string;
+  };
 }

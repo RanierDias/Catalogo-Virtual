@@ -20,7 +20,7 @@ export default function CartPage() {
         (item) =>
           `${item.id} - ${item.amount > 1 ? `(${item.amount}x)` : ""} ${
             item.name
-          } - ${item.variation} - ${item.price.toLocaleString("pt-br", {
+          } - ${item.variation.value} - ${item.price.toLocaleString("pt-br", {
             style: "currency",
             currency: "BRL",
           })}\n`

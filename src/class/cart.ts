@@ -6,16 +6,20 @@ export default class itemCart {
   name: string;
   price: number;
   amount: number;
-  variation: string;
+  variation: {
+    index: number;
+    value: string;
+  };
 
   constructor(product: IProduct, variation: number) {
-    const { color, image, price } = product.variations[variation];
+    const { value, image, price } = product.variations[variation];
+    const variatioProduct = { index: variation, value };
 
     this.id = product.id;
     this.name = product.name;
     this.amount = 1;
     this.image = image;
     this.price = price;
-    this.variation = color;
+    this.variation = variatioProduct;
   }
 }

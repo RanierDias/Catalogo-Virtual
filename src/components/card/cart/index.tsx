@@ -17,7 +17,7 @@ export default function CardListCart() {
           <h2>O seu carrinho esta vazio</h2>
         )}
         {cart.map((item) => (
-          <li key={`${item.id} - ${item.variation}`}>
+          <li key={`${item.id} - ${item.variation.value}`}>
             <div>
               <img src={item.image} alt={item.name} />
             </div>

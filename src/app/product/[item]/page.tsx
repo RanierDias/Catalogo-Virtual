@@ -28,7 +28,7 @@ export default function ProductPage({ params }: { params: { item: string } }) {
     const requestOrder = `- \t\t\t\t*Pedido de compra*\t\t\t\t-\n
     - - - -- - - - -- - - - -- - - - -- - - -- - - - -- - - - -- - - - -- - - - -- -
     \n*Cód. - (Qtd) Nome - Cor - Preço*\n${product.id} - ${product.name} - ${
-      product.variations[variation].color
+      product.variations[variation].value
     } - ${product.variations[variation].price.toLocaleString("pt-br", {
       style: "currency",
       currency: "BRL",
@@ -52,7 +52,7 @@ export default function ProductPage({ params }: { params: { item: string } }) {
           <div>
             <img
               src={product.variations[variation].image}
-              alt={`${product.name}, cor ${product.variations[variation].color}`}
+              alt={`${product.name}, cor ${product.variations[variation].value}`}
             />
           </div>
 
@@ -77,7 +77,7 @@ export default function ProductPage({ params }: { params: { item: string } }) {
                 >
                   {product?.variations.map((item, i) => (
                     <MenuItem value={i} key={i}>
-                      {item.color}
+                      {item.value}
                     </MenuItem>
                   ))}
                 </Select>

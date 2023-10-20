@@ -26,8 +26,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   function finishedCart(itemCart: ICart, newCart: ICart[]) {
     const message =
       itemCart.amount > 1
-        ? `Tem ${itemCart.amount}x ${itemCart.name} ${itemCart.variation} no carrinho`
-        : `${itemCart.name} ${itemCart.variation} foi adicionado ao carrinho`;
+        ? `Tem ${itemCart.amount}x ${itemCart.name} ${itemCart.variation.value} no carrinho`
+        : `${itemCart.name} ${itemCart.variation.value} foi adicionado ao carrinho`;
 
     localStorage.setItem("luxury:cart", JSON.stringify(newCart));
 
@@ -43,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const productFound = cart.find(
       (item) =>
         item.id == product.id &&
-        item.variation == product.variations[variation].color
+        item.variation.value == product.variations[variation].value
     );
 
     if (!productFound) {
@@ -56,7 +56,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const newCart = cart.map((item) => {
       if (
         item.id == productFound.id &&
-        item.variation == product.variations[variation].color
+        item.variation.value == product.variations[variation].value
       )
         item.amount += 1;
 
@@ -68,7 +68,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   function removeItemCart(itemCart: ICart) {
     const newCart = cart.filter((item) =>
-      item.id === itemCart.id ? item.variation != itemCart.variation : true
+      item.id === itemCart.id
+        ? item.variation.value != itemCart.variation.value
+        : true
     );
 
     localStorage.setItem("luxury:cart", JSON.stringify(newCart));
@@ -79,7 +81,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (itemCart.amount == 1) return removeItemCart(itemCart);
 
     const newCart = cart.map((item) => {
-      if (item.id == itemCart.id && item.variation == itemCart.variation)
+      if (
+        item.id == itemCart.id &&
+        item.variation.value == itemCart.variation.value
+      )
         item.amount -= 1;
 
       return item;
@@ -91,7 +96,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   function addQuantityItem(itemCart: ICart) {
     const newCart = cart.map((item) => {
-      if (item.id == itemCart.id && item.variation == itemCart.variation)
+      if (
+        item.id == itemCart.id &&
+        item.variation.value == itemCart.variation.value
+      )
         item.amount += 1;
 
       return item;
